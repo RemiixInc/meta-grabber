@@ -20,7 +20,8 @@ app.use((req, res) => {
       var site_name = $('meta[property="og:site_name"]').attr('content')
       var image = $('meta[property="og:image"]').attr('content') || $('meta[property="og:image:url"]').attr('content')
       var icon = $('link[rel="icon"]').attr('href') || $('link[rel="shortcut icon"]').attr('href')
-      res.json({ title: title, description: description, url: url, site_name: site_name, image: image, icon: icon })
+      var keywords = $('meta[property="og:keywords"]').attr('content') || $('meta[name="keywords"]').attr('content')
+      res.json({ title: title, description: description, url: url, site_name: site_name, image: image, icon: icon, keywords: keywords })
     }).catch(err => {
       res.json({
         "error": "Invalid url query.",
